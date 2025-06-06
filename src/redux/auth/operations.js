@@ -8,6 +8,7 @@ export const register = createAsyncThunk(
   async (values, thunkAPI) => {
     try {
       const res = await axios.post("/users/signup", values);
+      axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
       return res.data;
     } catch {
       return thunkAPI.rejectWithValue(true);
@@ -20,6 +21,7 @@ export const logIn = createAsyncThunk(
   async (values, thunkAPI) => {
     try {
       const res = await axios.post("/users/login", values);
+      axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
       return res.data;
     } catch {
       return thunkAPI.rejectWithValue(true);
@@ -27,8 +29,10 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
+    const res = await axios.post("/users/logout");
+    axios.defaults.headers.common.Authorization = "";
   } catch {
     return thunkAPI.rejectWithValue(true);
   }
