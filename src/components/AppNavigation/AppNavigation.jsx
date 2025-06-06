@@ -10,9 +10,7 @@ export default function AppNavigation() {
   return (
     <nav className={css.nav}>
       <NavLink to="/" className={getActiveLink}>Home</NavLink>
-      <NavLink to="/contacts" className={getActiveLink}>Contacts</NavLink>  
-      <NavLink to="/register" className={getActiveLink}>Sign Up</NavLink> 
-      <NavLink to="/login" className={getActiveLink}>Login</NavLink>          
+      <NavLink to="/contacts" className={getActiveLink}>Contacts</NavLink>                
     </nav>
   );
 }
