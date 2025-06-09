@@ -42,8 +42,18 @@ export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
     try {
+      const reduxState = thunkAPI.getState();
+      axios.defaults.headers.common.Authorization = `Bearer ${reduxState.auth.token}`;
+      const res = await axios.get("/users/current");
+      return res.data;
     } catch {
       return thunkAPI.rejectWithValue(true);
+    }
+  },
+  {
+    condition: (_, thunkAPI) => {
+      const reduxState = thunkAPI.getState();
+      return reduxState.auth.token !== null;
     }
   }
 );
