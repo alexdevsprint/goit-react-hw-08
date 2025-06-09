@@ -10,12 +10,16 @@ import { selectIsRefreshing } from "./redux/auth/selectors";
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-
+  
+ console.log("🔄 isRefreshing:", isRefreshing);
+ 
   return isRefreshing ? (
     <strong>Refreshing user ...</strong>
+   
   ) : (
     <div className={css.container}>
       <Layout>
