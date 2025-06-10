@@ -14,6 +14,7 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 
 import { selectLoading } from "../../redux/contacts/selectors";
 import { selectError } from "../../redux/contacts/selectors";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
@@ -26,9 +27,9 @@ export default function ContactsPage() {
 
   return (
     <div>
-      <h1>Contacts Page</h1>
+      <PageTitle>Contacts Page</PageTitle>
 
-      <h2 className={css.title}>Phonebook</h2>
+      {/* <h2 className={css.title}>Phonebook</h2> */}
       <ContactForm />
       <SearchBox />
       {loading && <Loader />}

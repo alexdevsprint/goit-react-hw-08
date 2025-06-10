@@ -1,9 +1,9 @@
 import LoginForm from "../../components/LoginFrom/LoginForm";
-
+import PageTitle from "../../components/PageTitle/PageTitle";
 export default function LoginPage() {
   return (
     <div>
-      <h1>Login Form</h1>
+      <PageTitle>Login Form</PageTitle>
       <LoginForm />
     </div>
   );
